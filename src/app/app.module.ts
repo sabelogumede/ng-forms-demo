@@ -17,4 +17,5 @@ import { UserSettingsFormComponent } from './user-settings-form/user-settings-fo
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

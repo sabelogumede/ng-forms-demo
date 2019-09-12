@@ -1,12 +1,20 @@
 <div class="container">
   <h2>User Settings</h2>
-
-  <form #form="ngForm">
+<!-- added "ngNativeValidate" directive to our form  -->
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
     <!-- text input -->
     <div class="form-group">
       <label for="name">Name</label>
-      <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]= "userSettings.name" />
+      <input id="name" name="name" class="form-control" placeholder="Name" [(ngModel)]= "userSettings.name"
+            required #nameField="ngModel"
+            (blur)="onBlur(nameField)"
+            [class.field-error]="form.submitted && nameField.invalid">
+      <div [hidden]="!form.submitted || nameField.valid"
+        class="alert alert-danger">
+        Enter a name
+      </div>
     </div>
+
     <!-- check button -->
     <div class="form-group form-check">
       <input class="form-check-input" type="checkbox" name="emailOffers" id="emailOffers" [(ngModel)]= "userSettings.emailOffers"/>
