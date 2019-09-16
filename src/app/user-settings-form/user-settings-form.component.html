@@ -2,6 +2,7 @@
   <h2>User Settings</h2>
 <!-- added "ngNativeValidate" directive to our form  -->
   <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
     <!-- text input -->
     <div class="form-group">
       <label for="name">Name</label>
@@ -14,6 +15,12 @@
         Enter a name
       </div>
     </div>
+    <!-- ngx-bootstrap ui -->
+    <button type="button" class="btn btn-primary" name="singleModel"
+        [(ngModel)]="singleModel" btnCheckbox
+        btnCheckboxTrue="On" btnCheckboxFalse="Off">
+        {{ singleModel }}
+    </button>
 
     <!-- check button -->
     <div class="form-group form-check">
@@ -47,15 +54,16 @@
     <!-- select group-->
     <div class="form-group">
       <label for="subscriptionType">Subscription Type</label>
-      <select class="form-control" id="subscriptionType" name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
-        <option>Monthly</option>
-        <option>Annual</option>
-        <option>Lifetime</option>
+      <select class="form-control" id="subscriptionType"
+               name="subscriptionType" [(ngModel)]="userSettings.subscriptionType">
+        <option *ngFor="let type of subscriptionTypes | async">
+          {{ type }}
+        </option>
       </select>
     </div>
     <!-- text area -->
     <div class="form-group">
-      <label for="notes">Example textarea</label>
+      <label for="notes">Notes</label>
       <textarea id="notes" name="notes" class="form-control" rows="3" [(ngModel)]="userSettings.notes"></textarea>
     </div>
     <!-- password field -->
@@ -63,13 +71,15 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" class="form-control" />
     </div> -->
-
+    <!-- error message -->
+    <div [hidden]="!postError"
+        class="alert alert-danger">
+        {{ postErrorMessage }}
+    </div>
     <!-- submit button -->
-    <button class="btn btn-primary">Ok</button>
+    <button class="btn btn-primary">Send</button>
   </form>
-
 </div>
 
-
-<h3>{{ userSettings | json }}</h3>
+<!-- <h3>{{ userSettings | json }}</h3> -->
 <!-- <h3>{{ originalUserSettings | json }}</h3> -->
