@@ -25,7 +25,15 @@
            bsDaterangepicker>
     </div>
 
+    <div class="form-group">
+      <label for="startTime">Start Time</label>
+        <timepicker [(ngModel)]="startTime" name="startTime" id="startTime">
+        </timepicker>
+    </div>
+
     Start Date: {{ startDate }}
+    <br>
+    Start Time: {{ startTime }}
     <br>
 
     <!-- ngx-bootstrap ui -->
