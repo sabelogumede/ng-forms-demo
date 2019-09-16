@@ -36,6 +36,15 @@
     Start Time: {{ startTime }}
     <br>
 
+    <div class="form-group">
+      User rating
+      <rating [(ngModel)]="userRating" [max]="maxRating" [readonly]="isReadonly"
+        name="userRating" id="userRating"
+        [titles]="['one','two','three']"></rating>
+    </div>
+    User Rating: {{ userRating }}
+    <br>
+
     <!-- ngx-bootstrap ui -->
     <button type="button" class="btn btn-primary" name="singleModel"
         [(ngModel)]="singleModel" btnCheckbox
