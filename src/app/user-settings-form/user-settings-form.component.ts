@@ -21,6 +21,7 @@ export class UserSettingsFormComponent implements OnInit {
   };
 
   singleModel = 'On';
+  startDate: Date;
   // A Copy of the "originalUserSettings assignment = userSettings"
   userSettings: UserSettings = { ...this.originalUserSettings };
   postError = false;
@@ -31,6 +32,8 @@ export class UserSettingsFormComponent implements OnInit {
 
   ngOnInit() {
     this.subscriptionTypes = this.dataService.getSubscriptionTypes();
+
+    this.startDate = new Date();
   }
 
   onBlur(field: NgModel) {
