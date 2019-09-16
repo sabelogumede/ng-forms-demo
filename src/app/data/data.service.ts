@@ -10,6 +10,10 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+  getSubscriptionTypes(): Observable<string[]> {
+    return of(['Monthly', 'Annual', 'Lifetime']);
+  }
+
   // method for sorting the form
   postUserSettingsForm(userSettings: UserSettings): Observable<any> {
     // http post request to an online testing service (https://putsreq.com)
